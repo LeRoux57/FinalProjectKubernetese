@@ -21,6 +21,13 @@ services:
     restart: always
     networks:
       - web_network
+
+  flask-material-dashboard: #Troisieme app
+    container_name: flask-material-dashboard #Nom du conteneur
+    build: './flask-material-dashboard' #Emplacement des fichiers de configuration
+    restart: always
+    networks:
+      - web_network
       
   #reverse proxy
   nginx:
@@ -32,7 +39,8 @@ services:
     ports:
       - "8080:8080" #Port app 1
       - "8081:8081" #Port app 2
-      - "99:99"
+      - "99:99"     #Port app 3
+      - "5005:5005" #Port app 4
     networks:
       - web_network
 
