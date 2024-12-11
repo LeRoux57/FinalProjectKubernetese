@@ -28,7 +28,14 @@ services:
     restart: always
     networks:
       - web_network
-      
+
+  django-argon-dashboard: #Troisieme app
+    container_name: django-argon-dashboard #Nom du conteneur
+    build: './django-argon-dashboard' #Emplacement des fichiers de configuration
+    restart: always
+    networks:
+      - web_network
+
   #reverse proxy
   nginx:
     container_name: nginxservproxy
@@ -41,6 +48,7 @@ services:
       - "8081:8081" #Port app 2
       - "99:99"     #Port app 3
       - "5005:5005" #Port app 4
+      - "80:80"     #Port app 5 
     networks:
       - web_network
 
