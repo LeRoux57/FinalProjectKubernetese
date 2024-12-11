@@ -22,7 +22,8 @@ services:
     networks:
       - web_network
     ports:
-      - "95:95"
+      - "8095:95"  
+
 
   django-datta-able:
     container_name: django-datta-able
