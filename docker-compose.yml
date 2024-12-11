@@ -14,6 +14,14 @@ services:
     restart: always
     networks:
       - web_network
+
+  django-material-kit: #Troisieme app
+    container_name: django-material-kit #Nom du conteneur
+    build: './django-material-kit' #Emplacement des fichiers de configuration
+    restart: always
+    networks:
+      - web_network
+      
   #reverse proxy
   nginx:
     container_name: nginxservproxy
@@ -24,6 +32,7 @@ services:
     ports:
       - "8080:8080" #Port app 1
       - "8081:8081" #Port app 2
+      - "99:99"
     networks:
       - web_network
 
