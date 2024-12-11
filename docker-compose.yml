@@ -15,6 +15,29 @@ services:
     networks:
       - web_network
 
+  django-soft-ui-design:
+    container_name: django-soft-ui-design
+    build: "./django-soft-ui-design"
+    restart: always
+    networks:
+      - web_network
+    ports:
+      - "95:95"
+
+  django-datta-able:
+    container_name: django-datta-able
+    build: "./django-datta-able"
+    restart: always
+    networks:
+      - web_network
+
+  django-material-kit: #Troisieme app
+    container_name: django-material-kit #Nom du conteneur
+    build: "./django-material-kit" #Emplacement des fichiers de configuration
+    restart: always
+    networks:
+      - web_network
+
   #reverse proxy
   nginx:
     container_name: nginxservproxy
@@ -26,6 +49,7 @@ services:
       - "8080:8080" #Port app 1
       - "8081:8081" #Port app 2
       - "9090:9090"
+      - "99:99"
     networks:
       - web_network
 
