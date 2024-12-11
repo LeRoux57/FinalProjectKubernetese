@@ -1,0 +1,21 @@
+services:
+  django-atlantis-dark:
+    container_name: django-atlantis-dark
+    restart: always
+    build: './django-atlantis-dark'
+
+  django-pixel:
+    container_name: django-pixel
+    restart: always
+    build: './django-pixel'
+
+  nginx:
+    container_name: nginxservproxy
+    image : nginx:alpine-slim
+    restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+
