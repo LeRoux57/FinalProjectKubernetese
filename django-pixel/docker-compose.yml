@@ -1,29 +1,13 @@
 version: '3.8'
 services:
   appseed-app:
-    container_name: appseed_app
+    container_name: django-pixel
     restart: always
     build: .
     networks:
-      - db_network
       - web_network
     expose:
-      - "8081"  
-
-  nginx:
-    container_name: nginx
-    restart: always
-    image: "nginx:latest"
-    ports:
-      - "8081:8081"  
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-    networks:
-      - web_network
-    depends_on:
-      - appseed-app
+      - "8081"
 networks:
-  db_network:
-    driver: bridge
   web_network:
     driver: bridge
